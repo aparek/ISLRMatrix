@@ -26,7 +26,7 @@ y = s + sigma*randn(size(s));
 
 % Make transforms
 R = 64; M = 2; K = 1; Nfft = 512;
-[AH, A, normA] = MakeTransforms('STFT',N,[R M K Nfft]);
+[AH, A, normA] = MakeTransforms('STDCT',N,[R M K Nfft]);
 
 % Plot noise free data
 figure(1), clf
