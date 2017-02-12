@@ -26,7 +26,7 @@ y = s + sigma*randn(size(s));
 
 % Make transforms
 R = 64; M = 2; K = 1; Nfft = 512;
-[AH, A, normA] = MakeTransforms('STDCT',N,[R M K Nfft]);
+[AH, A, normA] = MakeTransforms('STFT',N,[R M K Nfft]);
 
 % Plot noise free data
 figure(1), clf
@@ -38,7 +38,7 @@ ylim([-0.3 0.3])
 
 As = A(s);
 subplot(2,1,2)
-tt = R/M * ( (0:size(As, 2)) - 1 )/fs;    % tt : time axis for STDCT
+tt = R/M * ( (0:size(As, 2)) - 1 )/fs;    % tt : time axis for STFT
 imagesc(tt, [0 0.5], dB(As(1:Nfft/2+1, :)), max(dB(As(:))) + [-50 -5])
 axis xy
 xlim([0 N]/fs)
@@ -93,7 +93,7 @@ box off
 figure(4), clf
 
 subplot(4,1,1)
-tt = R/M * ( (0:size(As, 2)) - 1 )/fs;    % tt : time axis for STDCT
+tt = R/M * ( (0:size(As, 2)) - 1 )/fs;    % tt : time axis for STFT
 imagesc(tt, [0 1], dB(As(1:Nfft/2+1, :)), [-65 -20])
 axis xy
 title('(a) Clean speech spectrogram')
@@ -104,7 +104,7 @@ ylabel('Frequency (kHz)')
 
 
 subplot(4,1,2)
-tt = R/M * ( (0:size(Ay, 2)) - 1 )/fs;    % tt : time axis for STDCT
+tt = R/M * ( (0:size(Ay, 2)) - 1 )/fs;    % tt : time axis for STFT
 imagesc(tt, [0 1], dB(Ay(1:Nfft/2+1, :)),[-65 -20])
 axis xy
 title(sprintf('(b) Noisy speech spectrogram. SNR = %2.2f dB', SNR(s,real(AH(Ay)))))
@@ -114,7 +114,7 @@ ylabel('Frequency (kHz)')
 colorbar
 
 subplot(4,1,3)
-tt = R/M * ( (0:size(AxL1, 2)) - 1 )/fs;    % tt : time axis for STDCT
+tt = R/M * ( (0:size(AxL1, 2)) - 1 )/fs;    % tt : time axis for STFT
 imagesc(tt, [0 1], dB(A(AH(AxL1(1:Nfft/2+1, :)))),[-65 -20])
 axis xy
 title(sprintf('(c) SLR estimate. SNR = %2.2f dB', SNR(s,real(AH(AxL1)))))
@@ -124,7 +124,7 @@ ylabel('Frequency (kHz)')
 colorbar
 
 subplot(4,1,4)
-tt = R/M * ( (0:size(Ax, 2)) - 1 )/fs;    % tt : time axis for STDCT
+tt = R/M * ( (0:size(Ax, 2)) - 1 )/fs;    % tt : time axis for STFT
 imagesc(tt, [0 1], dB(A(AH(Ax(1:Nfft/2+1, :)))),[-65 -20])
 axis xy
 title(sprintf('(d) ISLR (proposed) estimate. SNR = %2.2f dB', SNR(s,real(AH(Ax)))))
