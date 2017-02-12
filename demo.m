@@ -136,6 +136,8 @@ box off
 xlabel('Time (s)')
 colorbar
 
+set(gcf','PaperPosition',[0 0 3 5])
+
 %% Comparison of SVD values
 
 figure(5), clf
