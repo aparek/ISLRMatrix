@@ -1,7 +1,7 @@
 This repository contains code for the following publication:
 
 Improved Sparse and Low-Rank Matrix Estimation.
-A. Parekh and I. W. Selesnick. May, 2016. 
+A. Parekh and I. W. Selesnick. Signal Processing, Apr, 2017.  
 (https://arxiv.org/abs/1605.00042)
 
 Contact: Ankit Parekh (ankit.parekh@nyu.edu)
